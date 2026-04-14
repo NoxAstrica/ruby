@@ -1,0 +1,29 @@
+---
+1: !ruby/object:Movie
+  id: 1
+  title: Inception
+  genres:
+  - Sci-Fi
+  - Action
+  - Thriller
+  directors:
+  - Christopher Nolan
+  actors:
+  - Leonardo DiCaprio
+  - Tom Hardy
+  release_date: '2010-07-16'
+  rating: 8.8
+  status: want_to_watch
+2: !ruby/object:Movie
+  id: 2
+  title: The Shawshank Redemption
+  genres:
+  - Drama
+  directors:
+  - Frank Darabont
+  actors:
+  - Tim Robbins
+  - Morgan Freeman
+  release_date: '1994-09-22'
+  rating: 9.3
+  status: watched

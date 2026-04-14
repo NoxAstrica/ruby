@@ -1,0 +1,49 @@
+---
+1:
+  :title: Inception
+  :genres:
+  - Sci-Fi
+  - Action
+  - Thriller
+  :directors:
+  - Christopher Nolan
+  :actors:
+  - Leonardo DiCaprio
+  - Tom Hardy
+  :release_date: '2010-07-16'
+  :rating: 8.8
+  :status: want_to_watch
+2:
+  :title: The Shawshank Redemption
+  :genres:
+  - Drama
+  :directors:
+  - Frank Darabont
+  :actors:
+  - Tim Robbins
+  - Morgan Freeman
+  :release_date: '1994-09-22'
+  :rating: 9.3
+  :status: watched
+3:
+  :title: ";ldkshf"
+  :genres:
+  - aldhsg
+  :directors:
+  - lksdv
+  :actors:
+  - ";lfajkgds"
+  :release_date: '2022-10-10'
+  :rating: 0.4
+  :status: watched
+4:
+  :title: ";asdhlv"
+  :genres:
+  - ";aslfdhkg"
+  :directors:
+  - ";dsljakg"
+  :actors:
+  - lsdjkf
+  :release_date: '2022-01-01'
+  :rating: 0.0
+  :status: watched
