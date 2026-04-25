@@ -1,0 +1,63 @@
+<% if flash[:notice] %>
+  <div style="padding: 15px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 20px;" id="flash-notice">
+    <strong>Success!</strong> <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<h1>Movie Catalog</h1>
+
+<%= form_with url: movies_path, method: :get, local: true do |f| %>
+  <div style="display: flex; gap: 10px; align-items: flex-end; margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
+    <div>
+      <%= f.label :query, "Title" %><br>
+      <%= f.text_field :query, value: params[:query], placeholder: "Search title..." %>
+    </div>
+
+    <div>
+      <%= f.label :genre_id, "Genre" %><br>
+      <%= f.select :genre_id, Genre.pluck(:name, :id), { include_blank: "All Genres", selected: params[:genre_id] } %>
+    </div>
+
+    <div>
+      <%= f.label :director, "Director" %><br>
+      <%= f.select :director, Movie.pluck(:director).uniq, { include_blank: "All Directors", selected: params[:director] } %>
+    </div>
+
+    <%= f.submit "Filter" %>
+    <%= link_to "Clear", movies_path %>
+  </div>
+<% end %>
+
+<%= link_to "Add New Movie", new_movie_path %> | 
+<%= link_to "Show Watched Only", watched_movies_path %> | 
+<%= link_to "Manage Genres", genres_path, class: "btn" %>
+
+<%# 2. The Table starts here %>
+<table border="1" style="width: 100%; margin-top: 20px;">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Rating</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.genre&.name %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.status.humanize %></td>
+        <td>
+          <%= link_to "Show", movie %> |
+          <%= link_to "Edit", edit_movie_path(movie) %> |
+          <%= link_to "Delete", movie_path(movie), 
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                      style: "color: red;" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

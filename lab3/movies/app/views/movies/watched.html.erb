@@ -1,0 +1,41 @@
+<h1>Watched Movies History</h1>
+
+<p>A collection of everything you have finished watching.</p>
+
+<%= link_to "← Back to Full Catalog", movies_path, style: "font-weight: bold;" %>
+
+<table border="1" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+  <thead style="background-color: #f2f2f2;">
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Director</th>
+      <th>Rating</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @movies.any? %>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td style="padding: 8px;"><%= movie.title %></td>
+          <td style="padding: 8px;"><%= movie.genre&.name %></td>
+          <td style="padding: 8px;"><%= movie.director %></td>
+          <td style="padding: 8px;"><%= movie.rating %>/10</td>
+          <td style="padding: 8px;">
+            <%= link_to "Details", movie %> |
+            <%= link_to "Edit", edit_movie_path(movie) %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5" style="text-align: center; padding: 20px;">No movies marked as 'Watched' yet.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div style="margin-top: 20px;">
+  <strong>Total Movies Watched:</strong> <%= @movies.count %>
+</div>

@@ -1,0 +1,38 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  
+  database: movies
+  username: postgres
+  password: 
+  host: localhost
+
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+
+
+test:
+  <<: *default
+  database: movies_test
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: movies_production
+    username: movies
+    password: <%= ENV["MOVIES_DATABASE_PASSWORD"] %>
+  cache:
+    <<: *primary_production
+    database: movies_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: movies_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: movies_production_cable
+    migrations_paths: db/cable_migrate

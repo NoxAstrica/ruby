@@ -1,0 +1,25 @@
+<h1>All Genres</h1>
+
+<%= link_to "← Back to Movie Catalog", movies_path, style: "font-weight: bold; display: block; margin-bottom: 20px;" %>
+
+<table border="1" style="width: 50%; text-align: left;">
+  <thead>
+    <tr>
+      <th>Genre Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= genre.name %></td>
+        <td>
+          <%= link_to "Edit", edit_genre_path(genre) %> | <%= button_to "Delete", genre, method: :delete, data: { confirm: "Are you sure?" }, style: "display: inline; color: red; background: none; border: none; cursor: pointer; text-decoration: underline;" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Create New Genre", new_genre_path %>

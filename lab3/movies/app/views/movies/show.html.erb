@@ -1,0 +1,14 @@
+<h1>Movie Details</h1>
+
+<div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+  <p><strong>Title:</strong> <%= @movie.title %></p>
+  <p><strong>Genre:</strong> <%= @movie.genre&.name %></p>
+  <p><strong>Director:</strong> <%= @movie.director %></p>
+  <p><strong>Release Date:</strong> <%= @movie.release_date %></p>
+  <p><strong>Rating:</strong> <%= @movie.rating %></p>
+  <p><strong>Status:</strong> <%= @movie.status.humanize %></p>
+</div>
+
+<br>
+<%= link_to "Edit this movie", edit_movie_path(@movie) %> |
+<%= link_to "Back to Catalog", movies_path %>

@@ -1,0 +1,48 @@
+<%= form_with(model: movie) do |f| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie.errors.count, "error") %> prevented this movie from being saved:</h2>
+      <ul>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :genre_id, "Genre" %>
+    <%# This fulfills the "Genre.pluck(:name)" requirement specifically %>
+    <%= f.select :genre_id, Genre.pluck(:name, :id), include_blank: "Select a Genre" %>
+  </div>
+
+  <div>
+    <%= f.label :director %>
+    <%= f.text_field :director %>
+  </div>
+
+  <div>
+    <%= f.label :release_date %>
+    <%= f.date_field :release_date %>
+  </div>
+
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, step: 0.1 %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%# The Enum Requirement: database gets the integer, user sees the string %>
+    <%= f.select :status, Movie.statuses.keys.map { |s| [s.humanize, s] } %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= f.submit "Save Movie" %>
+  </div>
+<% end %>
