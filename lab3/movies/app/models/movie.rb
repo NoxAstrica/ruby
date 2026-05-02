@@ -1,5 +1,4 @@
 class Movie < ApplicationRecord
-  belongs_to :genre
 
   enum :status, { want_to_watch: 0, watching: 1, watched: 2 }
 
