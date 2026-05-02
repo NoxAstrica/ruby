@@ -1,12 +1,13 @@
+# seeds.rb
 Movie.destroy_all
 Genre.destroy_all
 
-scifi = Genre.create!(name: "Sci-Fi")
+sci_fi = Genre.create!(name: "Sci-Fi")
 drama = Genre.create!(name: "Drama")
 
 Movie.create!(
   title: "Inception",
-  genre: scifi,
+  genre: sci_fi.name,
   director: "Christopher Nolan",
   release_date: "2010-07-16",
   rating: 8.8,
@@ -15,11 +16,9 @@ Movie.create!(
 
 Movie.create!(
   title: "The Shawshank Redemption",
-  genre: drama,
+  genre: drama.name,
   director: "Frank Darabont",
   release_date: "1994-09-22",
   rating: 9.3,
   status: :watched
 )
-
-puts "Success! Seeded #{Movie.count} movies."
