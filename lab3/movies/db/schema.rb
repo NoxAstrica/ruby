@@ -24,14 +24,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_24_011137) do
     t.datetime "created_at", null: false
     t.string "director"
     t.string "genre"
-    t.bigint "genre_id", null: false
     t.float "rating"
     t.date "release_date"
     t.integer "status"
     t.string "title"
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_movies_on_genre_id"
   end
-
-  add_foreign_key "movies", "genres"
 end
+
