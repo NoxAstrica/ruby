@@ -8,18 +8,15 @@ class MoviesController < ApplicationController
       @movies = @movies.where("title ILIKE ?", "%#{params[:query]}%")
     end
 
-    # Genre filter
     if params[:genre_id].present?
       @movies = @movies.where(genre_id: params[:genre_id])
     end
 
-    # Director filter
     if params[:director].present?
       @movies = @movies.where(director: params[:director])
     end
   end
 
-  # handle_add
   def new
     @movie = Movie.new
   end
@@ -63,7 +60,7 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :genre_id, :director, :release_date, :rating, :status)
+    params.require(:movie).permit(:title, :genre, :director, :release_date, :rating, :status)
   end
 
 end
